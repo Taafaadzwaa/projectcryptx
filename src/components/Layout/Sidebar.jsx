@@ -89,7 +89,7 @@ function Sidebar() {
               </div>
 
               {item.badge && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg--500 text-white">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-purple-600 text-white">
                   {item.badge}
                 </span>
               )}
