@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Sidebar from "./components/Layout/Sidebar";
 import Header from "./components/Layout/Header";
 import Dashboard from "./components/Dashboard/Dashboard";
-import DashboardConent from"./components/Dashboard/DashboardContent";
 
 function App() {
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
@@ -38,6 +37,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
