@@ -14,14 +14,14 @@ import { Bitcoin } from "lucide-react"; // only Bitcoin icon from lucide
 // Register ChartJS modules
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-// Chart data
+// Only March has a value
 const btcData = {
   labels: ["Jan", "Mar", "May", "Jul", "Sep", "Nov"],
   datasets: [
     {
       label: "BTC Price ($)",
-      data: [200, 400, 350, 600, 500, 750],
-      backgroundColor: "#7F3DFF", // purple bars
+      data: [null, null, 25240, null, null,  null],
+      backgroundColor: "#7F3DFF",
     },
   ],
 };
@@ -36,18 +36,48 @@ export default function DashboardContent() {
   ];
 
   const liveMarket = [
-    { coin: "Bitcoin", symbol: "BTC", price: "$40,291", change: "+2.3%" },
-    { coin: "Ethereum", symbol: "ETH", price: "$3,200", change: "+1.5%" },
-    { coin: "Litecoin", symbol: "LTC", price: "$180", change: "-0.5%" },
-    { coin: "Cardano", symbol: "ADA", price: "$1.20", change: "+0.8%" },
+    { coin: "Ethereum", symbol: "ETH/USDT", price: "39,789 USD", change: "+14.02%" },
+    { coin: "Bitcoin", symbol: "ETH/USDT", price: "21,786 USD", change: "+4.02%" },
+    { coin: "Litecoin", symbol: "ITC/USDT", price: "9,786 USD", change: "-4.02%" },
+    { coin: "Cardano", symbol: "ADA/USDT", price: "4,786 USD", change: "+0.02%" },
   ];
 
+  //the transactions section , including the logo on the right 
   const transactions = [
-    { id: 1, user: "Tafadzwa", coin: "BTC", amount: "$2,000", status: "Completed" },
-    { id: 2, user: "Jane", coin: "ETH", amount: "$500", status: "Pending" },
-    { id: 3, user: "Mike", coin: "LTC", amount: "$150", status: "Completed" },
-    { id: 4, user: "Sarah", coin: "ADA", amount: "$300", status: "Failed" },
-  ];
+  {
+    id: 1,
+    coin: "Ethereum",
+    amount: "$2,000",
+    status: "Completed",
+    date: "Toady, 19:30",
+    logo: "data:image/png;base64,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",
+  },
+  {
+    id: 2,
+    coin: "Bitcoin",
+    amount: "$500",
+    status: "Buy",
+    date: "Today,14:32",
+    logo: "data:image/png;base64,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",
+  },
+  {
+    id: 3,
+    coin: "Bitcoin",
+    amount: "$150",
+    status: "Buy",
+    date: "Today, 13:50",
+    logo: "data:image/png;base64,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",
+  },
+  {
+    id: 4,
+    coin: "Bitcoin",
+    amount: "$300",
+    status: "Buy",
+    date: "Today, 09:38",
+    logo: "data:image/png;base64,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",
+  },
+];
+
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
@@ -67,18 +97,27 @@ export default function DashboardContent() {
 
       {/* Top-right: BTC Bar Graph */}
       <div className="bg-white dark:bg-slate-900 rounded-xl p-4 shadow">
-        <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-white">BTC Price Over Months</h3>
-        <Bar
-          data={btcData}
-          options={{
-            responsive: true,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { min: 0, max: 800, ticks: { stepSize: 200 } },
+      <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-white">BTC Prices</h3>
+      <Bar
+        data={btcData}
+        options={{
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: false,
             },
-          }}
-        />
-      </div>
+          },
+          scales: {
+            y: {
+              min: 0,
+              max: 30000, // or whatever your scale is
+              ticks: { stepSize: 5000 },
+            },
+          },
+        }}
+      />
+    </div>
 
       {/* Bottom-left: Live Market Table */}
       <div className="bg-white dark:bg-slate-900 rounded-xl p-4 shadow">
@@ -108,32 +147,59 @@ export default function DashboardContent() {
       </div>
 
       {/* Bottom-right: Transactions */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-4 shadow">
-        <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-white">Transactions</h3>
-        <table className="w-full text-left">
-          <thead>
-            <tr>
-              <th className="pb-2 text-slate-500 dark:text-slate-400">User</th>
-              <th className="pb-2 text-slate-500 dark:text-slate-400">Coin</th>
-              <th className="pb-2 text-slate-500 dark:text-slate-400">Amount</th>
-              <th className="pb-2 text-slate-500 dark:text-slate-400">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map((tx) => (
-              <tr key={tx.id} className="border-t border-slate-200 dark:border-slate-700">
-                <td className="py-2">{tx.user}</td>
-                <td>{tx.coin}</td>
-                <td>{tx.amount}</td>
-                <td className={`font-medium ${
-                  tx.status === "Completed" ? "text-green-500" :
-                  tx.status === "Pending" ? "text-yellow-500" : "text-red-500"
-                }`}>{tx.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+<div className="bg-white dark:bg-slate-900 rounded-xl p-4 shadow">
+  <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-white">
+    Transactions
+  </h3>
+
+  <div className="space-y-4">
+    {transactions.map((tx) => (
+      <div
+        key={tx.id}
+        className="flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg"
+      >
+        {/* Left side: logo, coin, status */}
+        <div className="flex items-center space-x-3">
+          {/* Coin Logo */}
+          <img
+            src={tx.logo} // add logo URL to your transactions array
+            alt={tx.coin}
+            className="w-8 h-8 rounded-full"
+          />
+
+          {/* Coin name & status */}
+          <div>
+            <p className="text-sm font-semibold text-slate-800 dark:text-white">
+              {tx.coin}
+            </p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              {tx.status === "Completed" ? "Received" : tx.status}
+            </p>
+          </div>
+        </div>
+
+        {/* Right side: amount and date */}
+        <div className="text-right">
+          <p
+            className={`text-sm font-bold ${
+              tx.status === "Completed"
+                ? "text-green-500"
+                : tx.status === "Pending"
+                ? "text-yellow-500"
+                : "text-red-500"
+            }`}
+          >
+            {tx.amount}
+          </p>
+          <p className="text-xs text-slate-400 dark:text-slate-500">
+            {tx.date || "19 Jan 2026"}
+          </p>
+        </div>
       </div>
+    ))}
+  </div>
+</div>
+
 
     </div>
   );
