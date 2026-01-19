@@ -16,7 +16,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 // Only March has a value
 const btcData = {
-  labels: ["Jan", "Mar", "May", "Jul", "Sep", "Nov"],
+  labels: ["Jan", "March", "May", "July", "Sep", "Nov"],
   datasets: [
     {
       label: "BTC Price ($)",

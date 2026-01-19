@@ -62,7 +62,7 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": "18.x"
+    "node": "24.11.1"
   },
   "scripts": {
     "dev": "vite",
